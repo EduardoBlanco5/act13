@@ -40,10 +40,7 @@ int main()
     {
         cout << arreglo[i] << " ";
     }
-    cout <<"\n"<<endl;
-
-    
-    
+    cout<<"\n"<<endl;
     system("pause");
     return 0;
 }
