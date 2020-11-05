@@ -41,6 +41,9 @@ int main()
         cout << arreglo[i] << " ";
     }
     cout<<"\n"<<endl;
+
+    string *s = arreglo.buscar("O");
+    cout << s << " " << *s << endl;
     system("pause");
     return 0;
 }

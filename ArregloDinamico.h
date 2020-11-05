@@ -22,6 +22,8 @@ public:
     void eliminar_inicio();
     void eliminar(size_t p);
 
+    T* buscar(const T& s);
+
     size_t size();
     string operator[](size_t p)
     {
@@ -152,5 +154,19 @@ void ArregloDinamico<T>::eliminar(size_t p)
     cont--;
 }
 
+template<class T>
+T* ArregloDinamico<T>::buscar(const T& s)
+{
+    for (size_t i = 0; i < cont; i++)
+    {
+        if(s == arreglo[i])
+        {
+            return &arreglo[i];
+        }
+        return nullptr;
+    }
+    
+    return nullptr;
+}
 
 #endif 
