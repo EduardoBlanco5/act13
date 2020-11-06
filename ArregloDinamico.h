@@ -23,11 +23,18 @@ public:
     void eliminar(size_t p);
 
     T* buscar(const T& s);
+    ArregloDinamico<T*> buscar_todos(const T& s);
 
     size_t size();
-    string operator[](size_t p)
+    T operator[](size_t p)
     {
         return arreglo[p];
+    }
+
+    friend ArregloDinamico<T>& operator<<(ArregloDinamico<T> &a, const T& s)
+    {
+        a.insertar_final(s);
+        return a;
     }
 private:
     void expandir();
@@ -102,7 +109,7 @@ size_t ArregloDinamico<T>::size()
 template<class T>
 void ArregloDinamico<T>::expandir()
 {
-    string *nuevo = new string[tam+MAX];
+    T *nuevo = new T[tam+MAX];
 
     for(size_t i=0; i<cont; i++)
     {
@@ -167,6 +174,20 @@ T* ArregloDinamico<T>::buscar(const T& s)
     }
     
     return nullptr;
+}
+
+template<class T>
+ArregloDinamico<T*> ArregloDinamico<T>::buscar_todos(const T& s)
+{
+    ArregloDinamico<T*> ptrs;
+    for (size_t i = 0; i < cont; i++)
+    {
+        if(s == arreglo[i])
+        {
+            ptrs.insertar_final(&arreglo[i]);
+        } 
+    }
+    return ptrs;
 }
 
 #endif 
